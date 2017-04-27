@@ -1,9 +1,17 @@
 package ua.room414.spring.core.beans;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Component;
+
 /**
  * @author Alexander Melashchenko
  * @version 1.0 26 Apr 2017
  */
+@Component
+@PropertySource("classpath:client.properties")
 public class Client {
     private long id;
     private String fullName;
@@ -12,7 +20,8 @@ public class Client {
     public Client() {
     }
 
-    public Client(long id, String fullName) {
+    @Autowired
+    public Client(@Value("${id}") long id, @Value("${fullName}") String fullName) {
         this.id = id;
         this.fullName = fullName;
     }
@@ -37,7 +46,8 @@ public class Client {
         return greeting;
     }
 
-    public void setGreeting(String greeting) {
+    @Autowired
+    public void setGreeting(@Value("${greeting}") String greeting) {
         this.greeting = greeting;
     }
 

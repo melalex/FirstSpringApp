@@ -1,5 +1,7 @@
 package ua.room414.spring.core.beans;
 
+import org.springframework.stereotype.Component;
+
 import java.text.DateFormat;
 import java.util.Date;
 
@@ -7,6 +9,7 @@ import java.util.Date;
  * @author Alexander Melashchenko
  * @version 1.0 26 Apr 2017
  */
+@Component
 public class Event {
     private long id;
     private String message;

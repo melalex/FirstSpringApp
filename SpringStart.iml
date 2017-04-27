@@ -7,6 +7,9 @@
           <file>file://$MODULE_DIR$/src/resources/spring.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/beans.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/loggers.xml</file>
+          <file>file://$MODULE_DIR$/src/main/java/ua/room414/spring/core/AppConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/ua/room414/spring/core/LoggerConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/resources/root-config.xml</file>
         </fileset>
       </configuration>
     </facet>

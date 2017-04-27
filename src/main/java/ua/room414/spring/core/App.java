@@ -1,7 +1,11 @@
 package ua.room414.spring.core;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 import ua.room414.spring.core.beans.Client;
 import ua.room414.spring.core.beans.Event;
 import ua.room414.spring.core.enums.EventType;
@@ -9,20 +13,24 @@ import ua.room414.spring.core.loggers.EventLogger;
 
 import java.util.Map;
 
+@Component("app")
 public class App {
+    private static final ConfigurableApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+
     private Client client;
     private EventLogger defaultLogger;
     private Map<EventType, EventLogger> loggers;
-    private static ConfigurableApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
 
-    public App(Client client, EventLogger defaultLogger, Map<EventType, EventLogger> loggers) {
+    @Autowired
+    public App(Client client, @Qualifier("cachedFileLogger") EventLogger defaultLogger, @Qualifier("eventTypeEventLoggerMap") Map<EventType, EventLogger> loggers) {
         this.client = client;
         this.defaultLogger = defaultLogger;
         this.loggers = loggers;
+        this.client = client;
     }
 
     public static void main(String[] args) {
-        App app = (App) applicationContext.getBean("app");
+        App app = applicationContext.getBean("app", App.class);
         applicationContext.registerShutdownHook();
 
         app.logEvent("Some event from user 1");
