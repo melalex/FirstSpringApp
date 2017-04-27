@@ -54,5 +54,10 @@
             <artifactId>spring-tx</artifactId>
             <version>${spring.ver}</version>
         </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.8.10</version>
+        </dependency>
     </dependencies>
 </project>

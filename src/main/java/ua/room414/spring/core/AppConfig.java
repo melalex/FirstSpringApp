@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import ua.room414.spring.core.beans.Client;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import ua.room414.spring.core.beans.Event;
 import ua.room414.spring.core.enums.EventType;
 import ua.room414.spring.core.loggers.EventLogger;
@@ -19,6 +19,7 @@ import java.util.*;
  */
 @Configuration
 @ComponentScan("ua.room414.spring.core")
+@EnableAspectJAutoProxy
 public class AppConfig {
 
     @Bean
